@@ -1,4 +1,4 @@
-    import type { Task, TaskFilterOptions } from "../types";
+    import type { Task, TaskFilterOptions, TaskFormData } from "../types";
 
     export function filterTasks(tasks: Task[], filters:TaskFilterOptions){
         return tasks.filter((tasks) => {
@@ -9,6 +9,18 @@
     })
 }
 
+//cleans form data and adds Id
+export function createTask(data: TaskFormData): Task {
+  return {
+    id: crypto.randomUUID(),
+    title: data.title.trim(),
+    description: data.description?.trim(),
+    status: data.status,
+    priority: data.priority,
+    dueDate: data.dueDate,
+    createdAt: new Date().toISOString(),
+  };
+}
 // export function sortTasks(tasks: Task[], sortBy: "date" | "priority") {
 
 //     const sorted = [...tasks];
