@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Task, TaskFilterOptions } from "../../types";
+import type { Task, TaskFilterOptions } from "../../types";
 import { filterTasks, sortTasks } from "../../utils/taskUtils";
 
 import TaskForm from "../TaskForm/TaskForm";
@@ -43,16 +43,18 @@ export default function Dashboard() {
   const sortedTasks = sortTasks(filteredTasks, sortBy);
 
   return (
-    <div>
-      <h1>Task Dashboard</h1>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">Task Dashboard</h1>
 
-      <TaskForm onAddTask={addTask} />
+        <TaskForm onAddTask={addTask} />
 
-      <TaskList
-        tasks={sortedTasks}
-        onToggleStatus={toggleStatus}
-        onDelete={deleteTask}
-      />
+        <TaskList
+          tasks={sortedTasks}
+          onToggleStatus={toggleStatus}
+          onDelete={deleteTask}
+        />
+      </div>
     </div>
   );
 }

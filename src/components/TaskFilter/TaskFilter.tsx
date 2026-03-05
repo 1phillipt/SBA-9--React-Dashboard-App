@@ -1,4 +1,4 @@
-import { TaskFilterOptions } from "../../types";
+import type { TaskFilterOptions } from "../../types";
 
 interface TaskFilterProps {
   filters: TaskFilterOptions;
