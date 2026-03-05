@@ -1,4 +1,4 @@
-import type { TaskFilterOptions } from "../../types";
+import { TaskFilterOptions } from "../../types";
 
 interface TaskFilterProps {
   filters: TaskFilterOptions;
@@ -6,7 +6,6 @@ interface TaskFilterProps {
 }
 
 export default function TaskFilter({ filters, onFilterChange }: TaskFilterProps) {
-
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
@@ -14,18 +13,17 @@ export default function TaskFilter({ filters, onFilterChange }: TaskFilterProps)
 
     onFilterChange({
       ...filters,
-      [name]: value
+      [name]: value,
     });
   }
 
   return (
     <div>
-      <h3>Filter Tasks</h3>
+      <h2>Filter Tasks</h2>
 
       <div>
         <label>Search</label>
         <input
-          type="text"
           name="search"
           value={filters.search}
           onChange={handleChange}
