@@ -56,3 +56,20 @@ export function sortTasks(
 
   return sortedTasks;
 }
+export function validateTask(data: TaskFormData): string[] {
+  const errors: string[] = [];
+
+  if (!data.title || data.title.trim().length < 3) {
+    errors.push("Title must be at least 3 characters long.");
+  }
+
+  if (data.description && data.description.length > 200) {
+    errors.push("Description must be under 200 characters.");
+  }
+
+  if (data.dueDate && new Date(data.dueDate) < new Date()) {
+    errors.push("Due date cannot be in the past.");
+  }
+
+  return errors;
+}
